@@ -1,1 +1,1 @@
-module.exports = require('./dist/cypress-testrail-reporter').CypressTestRailReporter;
+module.exports = require('./dist/cypress-teskit-reporter').CypressTestKitReporter;

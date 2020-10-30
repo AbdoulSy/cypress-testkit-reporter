@@ -1,15 +1,15 @@
-# TestRail Reporter for Cypress
+# testkit Reporter for Cypress
 
-[![version](https://img.shields.io/npm/v/cypress-testrail-reporter.svg)](https://www.npmjs.com/package/cypress-testrail-reporter)
-[![downloads](https://img.shields.io/npm/dt/cypress-testrail-reporter.svg)](https://www.npmjs.com/package/cypress-testrail-reporter)
-[![MIT License](https://img.shields.io/github/license/Vivify-Ideas/cypress-testrail-reporter.svg)](https://github.com/Vivify-Ideas/cypress-testrail-reporter/blob/master/LICENSE.md)
+[![version](https://img.shields.io/npm/v/cypress-testkit-reporter.svg)](https://www.npmjs.com/package/cypress-testkit-reporter)
+[![downloads](https://img.shields.io/npm/dt/cypress-testkit-reporter.svg)](https://www.npmjs.com/package/cypress-testkit-reporter)
+[![MIT License](https://img.shields.io/github/license/Vivify-Ideas/cypress-testkit-reporter.svg)](https://github.com/Vivify-Ideas/cypress-testkit-reporter/blob/master/LICENSE.md)
 
-Publishes [Cypress](https://www.cypress.io/) runs on TestRail.
+Publishes [Cypress](https://www.cypress.io/) runs on testkit.
 
 ## Install
 
 ```shell
-$ npm install cypress-testrail-reporter --save-dev
+$ npm install cypress-testkit-reporter --save-dev
 ```
 
 ## Usage
@@ -18,9 +18,9 @@ Add reporter to your `cypress.json`:
 
 ```json
 ...
-"reporter": "cypress-testrail-reporter",
+"reporter": "cypress-testkit-reporter",
 "reporterOptions": {
-  "domain": "yourdomain.testrail.com",
+  "domain": "yourdomain.testkit.com",
   "username": "username",
   "password": "password",
   "projectId": 1,
@@ -28,7 +28,7 @@ Add reporter to your `cypress.json`:
 }
 ```
 
-Your Cypress tests should include the ID of your TestRail test case. Make sure your test case IDs are distinct from your test titles:
+Your Cypress tests should include the ID of your testkit test case. Make sure your test case IDs are distinct from your test titles:
 
 ```Javascript
 // Good:
@@ -42,7 +42,7 @@ it("Can authenticate a valid userC123", ...
 
 ## Reporter Options
 
-**domain**: _string_ domain name of your TestRail instance (e.g. for a hosted instance _instance.testrail.com_).
+**domain**: _string_ domain name of your testkit instance (e.g. for a hosted instance _instance.testkit.com_).
 
 **username**: _string_ email of the user under which the test run will be created.
 
@@ -52,7 +52,7 @@ it("Can authenticate a valid userC123", ...
 
 **suiteId**: _number_ suite with which the tests are associated.
 
-**runName**: _string_ (optional) name of the Testrail run.
+**runName**: _string_ (optional) name of the testkit run.
 
 **includeAllInTestRun**: _bool_ (optional: default is true) will return all test cases in test run. set to false to return test runs based on filter or section/group.
 
@@ -60,19 +60,19 @@ it("Can authenticate a valid userC123", ...
 
 **filter**: _string_ (optional: needs "includeAllInTestRun": false) Only return cases with matching filter string in the case title
 
-## TestRail Settings
+## testkit Settings
 
-To increase security, the TestRail team suggests using an API key instead of a password. You can see how to generate an API key [here](http://docs.gurock.com/testrail-api2/accessing#username_and_api_key).
+To increase security, the testkit team suggests using an API key instead of a password. You can see how to generate an API key [here](http://docs.gurock.com/testkit-api2/accessing#username_and_api_key).
 
-If you maintain your own TestRail instance on your own server, it is recommended to [enable HTTPS for your TestRail installation](http://docs.gurock.com/testrail-admin/admin-securing#using_https).
+If you maintain your own testkit instance on your own server, it is recommended to [enable HTTPS for your testkit installation](http://docs.gurock.com/testkit-admin/admin-securing#using_https).
 
-For TestRail hosted accounts maintained by [Gurock](http://www.gurock.com/), all accounts will automatically use HTTPS.
+For testkit hosted accounts maintained by [Gurock](http://www.gurock.com/), all accounts will automatically use HTTPS.
 
-You can read the whole TestRail documentation [here](http://docs.gurock.com/).
+You can read the whole testkit documentation [here](http://docs.gurock.com/).
 
 ## Author
 
-Milutin Savovic - [github](https://github.com/mickosav)
+Abdoul Sy - [github](https://github.com/AbdoulSy)
 
 ## License
 
@@ -80,5 +80,4 @@ This project is licensed under the [MIT license](/LICENSE.md).
 
 ## Acknowledgments
 
-* [Pierre Awaragi](https://github.com/awaragi), owner of the [mocha-testrail-reporter](https://github.com/awaragi/mocha-testrail-reporter) repository that was forked.
-* [Valerie Thoma](https://github.com/ValerieThoma) and [Aileen Santos](https://github.com/asantos3026) for proofreading the README.md file and making it more understandable.
+- [Milutin Savovic](https://github.com/mickosav), owner of the [cypress-testrail-reporter](https://github.com/mickosav/cypress-testrail-reporter) repository that was forked.

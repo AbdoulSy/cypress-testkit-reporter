@@ -37,14 +37,14 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var axios = require('axios');
 var chalk = require('chalk');
-var TestRail = /** @class */ (function () {
-    function TestRail(options) {
+var TestKit = /** @class */ (function () {
+    function TestKit(options) {
         this.options = options;
         this.includeAll = true;
         this.caseIds = [];
-        this.base = "https://" + options.domain + "/index.php?/api/v2";
+        this.base = "http://" + options.domain + "/api/v2"; //TODO: Upgrade to Https
     }
-    TestRail.prototype.getCases = function () {
+    TestKit.prototype.getCases = function () {
         return axios({
             method: 'get',
             url: this.base + "/get_cases/" + this.options.projectId + "&suite_id=" + this.options.suiteId + "&section_id=" + this.options.groupId + "&filter=" + this.options.filter,
@@ -57,7 +57,7 @@ var TestRail = /** @class */ (function () {
             .then(function (response) { return response.data.map(function (item) { return item.id; }); })
             .catch(function (error) { return console.error(error); });
     };
-    TestRail.prototype.createRun = function (name, description) {
+    TestKit.prototype.createRun = function (name, description) {
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             var _a;
@@ -97,7 +97,7 @@ var TestRail = /** @class */ (function () {
             });
         });
     };
-    TestRail.prototype.deleteRun = function () {
+    TestKit.prototype.deleteRun = function () {
         axios({
             method: 'post',
             url: this.base + "/delete_run/" + this.runId,
@@ -108,7 +108,7 @@ var TestRail = /** @class */ (function () {
             },
         }).catch(function (error) { return console.error(error); });
     };
-    TestRail.prototype.publishResults = function (results) {
+    TestKit.prototype.publishResults = function (results) {
         var _this = this;
         return axios({
             method: 'post',
@@ -121,12 +121,12 @@ var TestRail = /** @class */ (function () {
             data: JSON.stringify({ results: results }),
         })
             .then(function (response) {
-            console.log('\n', chalk.magenta.underline.bold('(TestRail Reporter)'));
-            console.log('\n', " - Results are published to " + chalk.magenta("https://" + _this.options.domain + "/index.php?/runs/view/" + _this.runId), '\n');
+            console.log('\n', chalk.magenta.underline.bold('(TestKit Reporter)'));
+            console.log('\n', " - Results are published to " + chalk.magenta("https://" + _this.options.domain + "/runs/view/" + _this.runId), '\n');
         })
             .catch(function (error) { return console.error(error); });
     };
-    TestRail.prototype.closeRun = function () {
+    TestKit.prototype.closeRun = function () {
         axios({
             method: 'post',
             url: this.base + "/close_run/" + this.runId,
@@ -139,7 +139,7 @@ var TestRail = /** @class */ (function () {
             .then(function () { return console.log('- Test run closed successfully'); })
             .catch(function (error) { return console.error(error); });
     };
-    return TestRail;
+    return TestKit;
 }());
-exports.TestRail = TestRail;
-//# sourceMappingURL=testrail.js.map
+exports.TestKit = TestKit;
+//# sourceMappingURL=testkit.js.map

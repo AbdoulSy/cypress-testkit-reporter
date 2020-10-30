@@ -1,4 +1,4 @@
-export interface TestRailOptions {
+export interface TestKitOptions {
   domain: string;
   username: string;
   password: string;
@@ -18,13 +18,13 @@ export enum Status {
   Failed = 5,
 }
 
-export interface TestRailResult {
+export interface TestKitResult {
   case_id: number;
   status_id: Status;
   comment?: String;
 }
 
-export interface TestRailCase {
+export interface TestKitCase {
   id: number;
   title: string;
   section_id: number;

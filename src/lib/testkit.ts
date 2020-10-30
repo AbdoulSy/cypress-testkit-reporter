@@ -1,15 +1,15 @@
 const axios = require('axios');
 const chalk = require('chalk');
-import { TestRailOptions, TestRailResult } from './testrail.interface';
+import { TestKitOptions, TestKitResult } from './testkit.interface';
 
-export class TestRail {
+export class TestKit {
   private base: String;
   private runId: Number;
   private includeAll: Boolean = true;
   private caseIds: Number[] = [];
 
-  constructor(private options: TestRailOptions) {
-    this.base = `https://${options.domain}/index.php?/api/v2`;
+  constructor(private options: TestKitOptions) {
+    this.base = `http://${options.domain}/api/v2`; //TODO: Upgrade to Https
   }
 
   public getCases () {
@@ -65,7 +65,7 @@ export class TestRail {
     }).catch(error => console.error(error));
   }
 
-  public publishResults(results: TestRailResult[]) {
+  public publishResults(results: TestKitResult[]) {
     return axios({
       method: 'post',
       url: `${this.base}/add_results_for_cases/${this.runId}`,
@@ -77,11 +77,11 @@ export class TestRail {
       data: JSON.stringify({ results }),
     })
       .then(response => {
-        console.log('\n', chalk.magenta.underline.bold('(TestRail Reporter)'));
+        console.log('\n', chalk.magenta.underline.bold('(TestKit Reporter)'));
         console.log(
           '\n',
           ` - Results are published to ${chalk.magenta(
-            `https://${this.options.domain}/index.php?/runs/view/${this.runId}`
+            `https://${this.options.domain}/runs/view/${this.runId}`
           )}`,
           '\n'
         );

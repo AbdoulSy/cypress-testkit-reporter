@@ -1,15 +1,19 @@
 {
-  "name": "cypress-testrail-reporter",
+  "name": "cypress-testkit-reporter",
   "version": "1.2.1",
-  "description": "A Testrail reporter for cypress including TestRail API basic library",
+  "description": "A testkit reporter for cypress including testkit API basic library",
   "main": "index.js",
   "private": false,
   "keywords": [
     "cypress",
-    "testrail",
+    "testkit",
     "reporter"
   ],
   "author": {
+    "name": "Abdoul Sy",
+    "email": "dreescan@gmail.com"
+  },
+  "thanksTo": {
     "name": "Milutin Savovic",
     "email": "mickosavovic@gmail.com"
   },
@@ -17,10 +21,10 @@
   "readmeFilename": "README.md",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vivify-Ideas/cypress-testrail-reporter.git"
+    "url": "https://github.com/Abdoul-Sy/cypress-testkit-reporter.git"
   },
   "bugs": {
-    "url": "https://github.com/Vivify-Ideas/cypress-testrail-reporter/issues"
+    "url": "https://github.com/Abdoul-Sy/cypress-testkit-reporter/issues"
   },
   "scripts": {
     "tsc": "tsc",

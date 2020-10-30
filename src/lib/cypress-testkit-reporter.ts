@@ -1,19 +1,19 @@
 import { reporters } from 'mocha';
 import * as moment from 'moment';
-import { TestRail } from './testrail';
+import { TestKit } from './testkit';
 import { titleToCaseIds } from './shared';
-import { Status, TestRailResult } from './testrail.interface';
+import { Status, TestKitResult } from './testkit.interface';
 const chalk = require('chalk');
 
-export class CypressTestRailReporter extends reporters.Spec {
-  private results: TestRailResult[] = [];
-  private testRail: TestRail;
+export class CypressTestKitReporter extends reporters.Spec {
+  private results: TestKitResult[] = [];
+  private testKit: TestKit;
 
   constructor(runner: any, options: any) {
     super(runner);
 
     let reporterOptions = options.reporterOptions;
-    this.testRail = new TestRail(reporterOptions);
+    this.testKit = new TestKit(reporterOptions);
     this.validate(reporterOptions, 'domain');
     this.validate(reporterOptions, 'username');
     this.validate(reporterOptions, 'password');
@@ -24,7 +24,7 @@ export class CypressTestRailReporter extends reporters.Spec {
       const executionDateTime = moment().format('MMM Do YYYY, HH:mm (Z)');
       const name = `${reporterOptions.runName || 'Automated test run'} ${executionDateTime}`;
       const description = 'For the Cypress run visit https://dashboard.cypress.io/#/projects/runs';
-      this.testRail.createRun(name, description);
+      this.testKit.createRun(name, description);
     });
 
     runner.on('pass', test => {
@@ -57,20 +57,20 @@ export class CypressTestRailReporter extends reporters.Spec {
 
     runner.on('end', () => {
       if (this.results.length == 0) {
-        console.log('\n', chalk.magenta.underline.bold('(TestRail Reporter)'));
+        console.log('\n', chalk.magenta.underline.bold('(TestKit Reporter)'));
         console.warn(
           '\n',
           'No testcases were matched. Ensure that your tests are declared correctly and matches Cxxx',
           '\n'
         );
-        this.testRail.deleteRun();
+        this.testKit.deleteRun();
 
         return;
       }
 
       // publish test cases results & close the run
-      this.testRail.publishResults(this.results)
-        .then(() => this.testRail.closeRun());
+      this.testKit.publishResults(this.results)
+        .then(() => this.testKit.closeRun());
     });
   }
 

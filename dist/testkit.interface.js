@@ -8,4 +8,4 @@ var Status;
     Status[Status["Retest"] = 4] = "Retest";
     Status[Status["Failed"] = 5] = "Failed";
 })(Status = exports.Status || (exports.Status = {}));
-//# sourceMappingURL=testrail.interface.js.map
+//# sourceMappingURL=testkit.interface.js.map
