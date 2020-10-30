@@ -1,5 +1,7 @@
 # testkit Reporter for Cypress
 
+## Note: TestKit is in active development visit https://github.com/Abdoul/testkit for more details
+
 [![version](https://img.shields.io/npm/v/cypress-testkit-reporter.svg)](https://www.npmjs.com/package/cypress-testkit-reporter)
 [![downloads](https://img.shields.io/npm/dt/cypress-testkit-reporter.svg)](https://www.npmjs.com/package/cypress-testkit-reporter)
 [![MIT License](https://img.shields.io/github/license/Vivify-Ideas/cypress-testkit-reporter.svg)](https://github.com/Vivify-Ideas/cypress-testkit-reporter/blob/master/LICENSE.md)
@@ -39,6 +41,8 @@ it("Can authenticate a valid user C321", ...
 it("C123Can authenticate a valid user", ...
 it("Can authenticate a valid userC123", ...
 ```
+
+If no TestKit ID is provided, it will be created automatically by TestKit by the name of the test
 
 ## Reporter Options
 
